@@ -14,6 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "usuarios")
@@ -28,16 +32,20 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	
+	@NotEmpty(message = "Email es obligatorio")
+	@Email(message = "Debe ingresar un mail válido")
 	@Column(unique = true, length = 120)
 	private String username;
 	
 	@Column(length = 120)
 	private String password;
 	
+	@NotEmpty(message = "nombre es obligatorio")
 	@Column(nullable = false, length = 120)
 	private String nombre;
 	
+	@NotEmpty(message = "apellido es obligatorio")
+	@Length(min = 1, max = 120, message = "No puede superar 120 catacteres")
 	@Column(nullable = true, length = 120)
 	private String apellido;
 	

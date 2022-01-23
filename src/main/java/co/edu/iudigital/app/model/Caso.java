@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+//ORM -> Hibernate
 @Entity
 @Table(name = "casos")
 public class Caso implements Serializable{
